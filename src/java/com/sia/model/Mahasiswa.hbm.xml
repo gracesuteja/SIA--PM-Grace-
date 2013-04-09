@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Mahasiswa" table="mahasiswa" catalog="siadb">
+        <id name="nim" type="int">
+            <column name="NIM" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hakakses" class="com.sia.model.Hakakses" fetch="select">
+            <column name="ID_Akses" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departemen" class="com.sia.model.Departemen" fetch="select">
+            <column name="ID_Dept" not-null="true" />
+        </many-to-one>
+        <property name="nama" type="string">
+            <column name="Nama" length="30" not-null="true" />
+        </property>
+        <property name="angkatan" type="int">
+            <column name="Angkatan" not-null="true" />
+        </property>
+        <property name="idOrtu" type="string">
+            <column name="ID_ortu" length="20" not-null="true" />
+        </property>
+        <property name="passOrtu" type="string">
+            <column name="Pass_ortu" length="20" not-null="true" />
+        </property>
+        <property name="passMhs" type="string">
+            <column name="Pass_mhs" length="20" not-null="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="10" not-null="true" />
+        </property>
+        <property name="alumni" type="string">
+            <column name="Alumni" length="3" not-null="true" />
+        </property>
+        <set name="transaksis" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Transaksi" />
+        </set>
+        <set name="ambils" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ambil" />
+        </set>
+        <set name="recordipses" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Recordips" />
+        </set>
+        <set name="absensis" inverse="true">
+            <key>
+                <column name="NIM" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absensi" />
+        </set>
+    </class>
+</hibernate-mapping>

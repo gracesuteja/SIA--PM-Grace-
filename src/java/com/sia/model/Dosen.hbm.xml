@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Dosen" table="dosen" catalog="siadb">
+        <id name="nikd" type="int">
+            <column name="NIKD" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="hakakses" class="com.sia.model.Hakakses" fetch="select">
+            <column name="ID_Akses" not-null="true" />
+        </many-to-one>
+        <property name="nama" type="string">
+            <column name="Nama" length="30" not-null="true" />
+        </property>
+        <property name="jabatan" type="string">
+            <column name="Jabatan" length="20" not-null="true" />
+        </property>
+        <property name="passDs" type="string">
+            <column name="Pass_ds" length="20" not-null="true" />
+        </property>
+        <set name="jadwals" inverse="true">
+            <key>
+                <column name="NIKD" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Jadwal" />
+        </set>
+        <set name="absensis" inverse="true">
+            <key>
+                <column name="NIKD" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absensi" />
+        </set>
+        <set name="departemens" inverse="true">
+            <key>
+                <column name="NIKD" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Departemen" />
+        </set>
+        <set name="ajars" inverse="true">
+            <key>
+                <column name="NIKD" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ajar" />
+        </set>
+    </class>
+</hibernate-mapping>

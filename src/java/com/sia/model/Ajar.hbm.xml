@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Ajar" table="ajar" catalog="siadb">
+        <composite-id name="id" class="com.sia.model.AjarId">
+            <key-property name="nikd" type="int">
+                <column name="NIKD" />
+            </key-property>
+            <key-property name="kodeMk" type="int">
+                <column name="Kode_MK" />
+            </key-property>
+            <key-property name="idPeriodic" type="int">
+                <column name="ID_Periodic" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="dosen" class="com.sia.model.Dosen" update="false" insert="false" fetch="select">
+            <column name="NIKD" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periodic" class="com.sia.model.Periodic" update="false" insert="false" fetch="select">
+            <column name="ID_Periodic" not-null="true" />
+        </many-to-one>
+        <property name="bobot1" type="int">
+            <column name="Bobot_1" not-null="true" />
+        </property>
+        <property name="bobot2" type="int">
+            <column name="Bobot_2" not-null="true" />
+        </property>
+        <property name="bobot3" type="int">
+            <column name="Bobot_3" not-null="true" />
+        </property>
+        <property name="bobot4" type="int">
+            <column name="Bobot_4" not-null="true" />
+        </property>
+        <property name="bobot5" type="int">
+            <column name="Bobot_5" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

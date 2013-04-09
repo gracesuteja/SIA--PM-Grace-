@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Recordips" table="recordips" catalog="siadb">
+        <composite-id name="id" class="com.sia.model.RecordipsId">
+            <key-property name="idSemester" type="int">
+                <column name="ID_Semester" />
+            </key-property>
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+            <key-property name="idPeriodic" type="int">
+                <column name="ID_periodic" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="semester" class="com.sia.model.Semester" update="false" insert="false" fetch="select">
+            <column name="ID_Semester" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periodic" class="com.sia.model.Periodic" update="false" insert="false" fetch="select">
+            <column name="ID_periodic" not-null="true" />
+        </many-to-one>
+        <property name="nilaiIps" type="double">
+            <column name="NilaiIPS" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

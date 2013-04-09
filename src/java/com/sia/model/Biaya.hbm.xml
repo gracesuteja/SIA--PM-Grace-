@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Biaya" table="biaya" catalog="siadb">
+        <id name="angkatan" type="int">
+            <column name="Angkatan" />
+            <generator class="assigned" />
+        </id>
+        <property name="BSks" type="int">
+            <column name="B_sks" not-null="true" />
+        </property>
+        <property name="BSemester" type="int">
+            <column name="B_semester" not-null="true" />
+        </property>
+        <set name="transaksis" inverse="true">
+            <key>
+                <column name="Angkatan" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Transaksi" />
+        </set>
+    </class>
+</hibernate-mapping>

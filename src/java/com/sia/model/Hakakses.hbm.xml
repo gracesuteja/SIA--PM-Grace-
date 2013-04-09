@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Hakakses" table="hakakses" catalog="siadb">
+        <id name="idAkses" type="int">
+            <column name="ID_Akses" />
+            <generator class="assigned" />
+        </id>
+        <property name="pengakses" type="string">
+            <column name="pengakses" length="10" not-null="true" />
+        </property>
+        <property name="edit" type="int">
+            <column name="edit" not-null="true" />
+        </property>
+        <property name="modulDataUser" type="int">
+            <column name="modul_data_user" not-null="true" />
+        </property>
+        <property name="modulDataMhsDosenStaff" type="int">
+            <column name="modul_data_mhs_dosen_staff" not-null="true" />
+        </property>
+        <property name="modulMkpengajar" type="int">
+            <column name="modul_MKPengajar" not-null="true" />
+        </property>
+        <property name="modulNilaiTranskripMhs" type="int">
+            <column name="modul_nilaiTranskrip_mhs" not-null="true" />
+        </property>
+        <property name="modulKeuangan" type="int">
+            <column name="modul_keuangan" not-null="true" />
+        </property>
+        <property name="modulBahanKuliah" type="int">
+            <column name="modul_bahan_kuliah" not-null="true" />
+        </property>
+        <property name="modulKrsonline" type="int">
+            <column name="modul_KRSOnline" not-null="true" />
+        </property>
+        <property name="modulBakcup" type="int">
+            <column name="modul_bakcup" not-null="true" />
+        </property>
+        <property name="modulAbsensiMhs" type="int">
+            <column name="modul_absensi_mhs" not-null="true" />
+        </property>
+        <set name="mahasiswas" inverse="true">
+            <key>
+                <column name="ID_Akses" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mahasiswa" />
+        </set>
+        <set name="dosens" inverse="true">
+            <key>
+                <column name="ID_Akses" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Dosen" />
+        </set>
+        <set name="staffs" inverse="true">
+            <key>
+                <column name="ID_Akses" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Staff" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Fakultas" table="fakultas" catalog="siadb">
+        <id name="idFakultas" type="int">
+            <column name="ID_Fakultas" />
+            <generator class="assigned" />
+        </id>
+        <property name="namaFakultas" type="string">
+            <column name="Nama_Fakultas" length="30" not-null="true" />
+        </property>
+        <set name="departemens" inverse="true">
+            <key>
+                <column name="ID_Fakultas" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Departemen" />
+        </set>
+    </class>
+</hibernate-mapping>

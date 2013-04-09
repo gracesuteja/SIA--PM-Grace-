@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/siadb?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <mapping resource="com/sia/model/Ajar.hbm.xml"/>
+    <mapping resource="com/sia/model/Matkul.hbm.xml"/>
+    <mapping resource="com/sia/model/Ruangan.hbm.xml"/>
+    <mapping resource="com/sia/model/Dosen.hbm.xml"/>
+    <mapping resource="com/sia/model/Tugaskul.hbm.xml"/>
+    <mapping resource="com/sia/model/Kurikulum.hbm.xml"/>
+    <mapping resource="com/sia/model/Ambil.hbm.xml"/>
+    <mapping resource="com/sia/model/Staff.hbm.xml"/>
+    <mapping resource="com/sia/model/Mahasiswa.hbm.xml"/>
+    <mapping resource="com/sia/model/Bahankul.hbm.xml"/>
+    <mapping resource="com/sia/model/Recordips.hbm.xml"/>
+    <mapping resource="com/sia/model/Periodic.hbm.xml"/>
+    <mapping resource="com/sia/model/Fakultas.hbm.xml"/>
+    <mapping resource="com/sia/model/Employee.hbm.xml"/>
+    <mapping resource="com/sia/model/Departemen.hbm.xml"/>
+    <mapping resource="com/sia/model/Hakakses.hbm.xml"/>
+    <mapping resource="com/sia/model/Biaya.hbm.xml"/>
+    <mapping resource="com/sia/model/Absensi.hbm.xml"/>
+    <mapping resource="com/sia/model/Semester.hbm.xml"/>
+    <mapping resource="com/sia/model/Jadwal.hbm.xml"/>
+    <mapping resource="com/sia/model/Transaksi.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

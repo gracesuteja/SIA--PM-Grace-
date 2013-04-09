@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Kurikulum" table="kurikulum" catalog="siadb">
+        <composite-id name="id" class="com.sia.model.KurikulumId">
+            <key-property name="kodeMk" type="int">
+                <column name="Kode_MK" />
+            </key-property>
+            <key-property name="idDept" type="int">
+                <column name="ID_Dept" />
+            </key-property>
+            <key-property name="idPeriodic" type="int">
+                <column name="ID_Periodic" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="periodic" class="com.sia.model.Periodic" update="false" insert="false" fetch="select">
+            <column name="ID_Periodic" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departemen" class="com.sia.model.Departemen" update="false" insert="false" fetch="select">
+            <column name="ID_Dept" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

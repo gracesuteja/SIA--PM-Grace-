@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Ruangan" table="ruangan" catalog="siadb">
+        <id name="noRuang" type="int">
+            <column name="No_Ruang" />
+            <generator class="assigned" />
+        </id>
+        <property name="lantai" type="string">
+            <column name="Lantai" length="2" not-null="true" />
+        </property>
+        <property name="jmlKursi" type="int">
+            <column name="Jml_kursi" not-null="true" />
+        </property>
+        <set name="absensis" inverse="true">
+            <key>
+                <column name="No_Ruang" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Absensi" />
+        </set>
+        <set name="jadwals" inverse="true">
+            <key>
+                <column name="No_Ruang" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Jadwal" />
+        </set>
+    </class>
+</hibernate-mapping>

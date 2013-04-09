@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Ambil" table="ambil" catalog="siadb">
+        <composite-id name="id" class="com.sia.model.AmbilId">
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+            <key-property name="kodeMk" type="int">
+                <column name="Kode_MK" />
+            </key-property>
+            <key-property name="idDept" type="int">
+                <column name="ID_Dept" />
+            </key-property>
+            <key-property name="idPeriodic" type="int">
+                <column name="ID_Periodic" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="matkul" class="com.sia.model.Matkul" update="false" insert="false" fetch="select">
+            <column name="Kode_MK" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periodic" class="com.sia.model.Periodic" update="false" insert="false" fetch="select">
+            <column name="ID_Periodic" not-null="true" />
+        </many-to-one>
+        <many-to-one name="departemen" class="com.sia.model.Departemen" update="false" insert="false" fetch="select">
+            <column name="ID_Dept" not-null="true" />
+        </many-to-one>
+        <property name="kelas" type="string">
+            <column name="Kelas" length="2" not-null="true" />
+        </property>
+        <property name="semester" type="string">
+            <column name="Semester" length="10" not-null="true" />
+        </property>
+        <property name="nilai1" type="int">
+            <column name="Nilai_1" not-null="true" />
+        </property>
+        <property name="nilai2" type="int">
+            <column name="Nilai_2" not-null="true" />
+        </property>
+        <property name="nilai3" type="int">
+            <column name="Nilai_3" not-null="true" />
+        </property>
+        <property name="nilai4" type="int">
+            <column name="Nilai_4" not-null="true" />
+        </property>
+        <property name="nilai5" type="int">
+            <column name="Nilai_5" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

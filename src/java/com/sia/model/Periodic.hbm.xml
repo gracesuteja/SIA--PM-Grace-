@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Periodic" table="periodic" catalog="siadb">
+        <id name="idPerodic" type="int">
+            <column name="ID_Perodic" />
+            <generator class="assigned" />
+        </id>
+        <property name="tahunMulai" type="int">
+            <column name="Tahun_mulai" not-null="true" />
+        </property>
+        <property name="tahunAkhir" type="int">
+            <column name="Tahun_akhir" not-null="true" />
+        </property>
+        <property name="tglKuliah" type="date">
+            <column name="tgl_kuliah" length="10" not-null="true" />
+        </property>
+        <property name="tglAkhirKuliah" type="date">
+            <column name="tgl_akhir_kuliah" length="10" not-null="true" />
+        </property>
+        <property name="tglKrs" type="date">
+            <column name="tgl_KRS" length="10" not-null="true" />
+        </property>
+        <property name="tglPrs" type="date">
+            <column name="tgl_PRS" length="10" not-null="true" />
+        </property>
+        <set name="kurikulums" inverse="true">
+            <key>
+                <column name="ID_Periodic" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Kurikulum" />
+        </set>
+        <set name="transaksis" inverse="true">
+            <key>
+                <column name="ID_Periodic" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Transaksi" />
+        </set>
+        <set name="recordipses" inverse="true">
+            <key>
+                <column name="ID_periodic" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Recordips" />
+        </set>
+        <set name="ajars" inverse="true">
+            <key>
+                <column name="ID_Periodic" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ajar" />
+        </set>
+        <set name="ambils" inverse="true">
+            <key>
+                <column name="ID_Periodic" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ambil" />
+        </set>
+    </class>
+</hibernate-mapping>

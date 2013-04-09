@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Departemen" table="departemen" catalog="siadb">
+        <id name="idDept" type="int">
+            <column name="ID_Dept" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="dosen" class="com.sia.model.Dosen" fetch="select">
+            <column name="NIKD" not-null="true" />
+        </many-to-one>
+        <many-to-one name="fakultas" class="com.sia.model.Fakultas" fetch="select">
+            <column name="ID_Fakultas" not-null="true" />
+        </many-to-one>
+        <property name="namaJurusan" type="string">
+            <column name="Nama_Jurusan" length="20" not-null="true" />
+        </property>
+        <set name="kurikulums" inverse="true">
+            <key>
+                <column name="ID_Dept" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Kurikulum" />
+        </set>
+        <set name="ambils" inverse="true">
+            <key>
+                <column name="ID_Dept" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Ambil" />
+        </set>
+        <set name="mahasiswas" inverse="true">
+            <key>
+                <column name="ID_Dept" not-null="true" />
+            </key>
+            <one-to-many class="com.sia.model.Mahasiswa" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2013 5:27:47 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="com.sia.model.Transaksi" table="transaksi" catalog="siadb">
+        <composite-id name="id" class="com.sia.model.TransaksiId">
+            <key-property name="nim" type="int">
+                <column name="NIM" />
+            </key-property>
+            <key-property name="kodeMk" type="int">
+                <column name="Kode_MK" />
+            </key-property>
+            <key-property name="angkatan" type="int">
+                <column name="Angkatan" />
+            </key-property>
+            <key-property name="idPeriodic" type="int">
+                <column name="ID_Periodic" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="matkul" class="com.sia.model.Matkul" update="false" insert="false" fetch="select">
+            <column name="Kode_MK" not-null="true" />
+        </many-to-one>
+        <many-to-one name="biaya" class="com.sia.model.Biaya" update="false" insert="false" fetch="select">
+            <column name="Angkatan" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mahasiswa" class="com.sia.model.Mahasiswa" update="false" insert="false" fetch="select">
+            <column name="NIM" not-null="true" />
+        </many-to-one>
+        <many-to-one name="periodic" class="com.sia.model.Periodic" update="false" insert="false" fetch="select">
+            <column name="ID_Periodic" not-null="true" />
+        </many-to-one>
+        <property name="tanggalBayar" type="date">
+            <column name="Tanggal_bayar" length="10" not-null="true" />
+        </property>
+        <property name="statusBayar" type="string">
+            <column name="Status_bayar" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
